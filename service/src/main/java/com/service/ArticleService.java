@@ -30,6 +30,8 @@ public class ArticleService {
         return this.articleFacade.getAllArticles();
     }
 
+    public boolean deleteArticle
+
     public IArticleFacade getArticleFacade() {
         return articleFacade;
     }

@@ -22,4 +22,19 @@ public class ArticleDao implements IArticleDao{
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
+    public boolean deleteArticle(int id){
+
+        return false;
+    }
+
+    public boolean saveArticle(Article myArticle){
+
+        return true;
+    }
+
+    public Article getArticle(int id){
+
+        return null;
+    }
 }

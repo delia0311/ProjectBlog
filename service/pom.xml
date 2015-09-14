@@ -22,7 +22,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>blog-app</groupId>
+            <groupId>BlogApp2</groupId>
             <artifactId>impl</artifactId>
             <version>${pom.version}</version>
         </dependency>

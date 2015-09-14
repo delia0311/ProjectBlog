@@ -4,4 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <import resource="classpath:/META-INF/hibernate/article.dao.xml" />
+    <import resource="classpath:/META-INF/hibernate/comment.dao.xml" />
+
 </beans>

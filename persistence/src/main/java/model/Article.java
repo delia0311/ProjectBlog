@@ -14,7 +14,7 @@ public class Article {
     @GeneratedValue(generator="idIncrementor")
     @GenericGenerator(name="idIncrementor" , strategy="increment")
     @Id
-    private int id;
+    private Long id;
     @Column(name="title")
     private String title;
     @Column(name="description")
@@ -22,7 +22,7 @@ public class Article {
     @Column(name="content")
     private String content;
 
-    private Article(){};
+    private Article(){}
 
     public Article(String title, String description, String content) {
         this.title = title;
@@ -30,11 +30,11 @@ public class Article {
         this.content = content;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

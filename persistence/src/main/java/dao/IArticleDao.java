@@ -8,8 +8,9 @@ import model.Article;
 public interface IArticleDao {
 
     public List<Article> getAll();
-    public Article getArticle(int id);
-    public  boolean deleteArticle(int id);
-    public  boolean saveArticle(Article myArticle);
+    public Article getArticle(Long id);
+    public  void deleteArticle(Long id);
+    public  void saveArticle(Article myArticle);
+    public  void updateArticle(Article myArticle);
 
 }

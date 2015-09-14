@@ -14,26 +14,6 @@ public class ArticleFacade implements IArticleFacade {
     @Autowired
     private IArticleDao articleDao;
 
-    public List<Article> getAllArticles() {
-
-        return this.articleDao.getAll();
-    }
-
-    public boolean deleteMyArticle(int id){
-
-        return this.articleDao.deleteArticle(id);
-    }
-
-    public boolean saveMyArticle(Article myArticle){
-
-        return this.articleDao.saveArticle(myArticle);
-    }
-
-    public Article getMyArticle(int id){
-
-        return this.articleDao.getArticle(id);
-    }
-
     public IArticleDao getArticleDao() {
         return articleDao;
     }
@@ -41,4 +21,31 @@ public class ArticleFacade implements IArticleFacade {
     public void setArticleDao(IArticleDao articleDao) {
         this.articleDao = articleDao;
     }
+
+    public List<Article> getAllArticles() {
+
+        return this.articleDao.getAll();
+    }
+
+    public void deleteMyArticle(Long id){
+
+        this.articleDao.deleteArticle(id);
+    }
+
+    public void saveMyArticle(Article myArticle){
+
+        this.articleDao.saveArticle(myArticle);
+    }
+
+    public Article getMyArticle(Long id){
+
+        return this.articleDao.getArticle(id);
+    }
+
+    public void updateMyArticle(Article myArticle){
+
+        this.articleDao.updateArticle(myArticle);
+    }
+
+
 }

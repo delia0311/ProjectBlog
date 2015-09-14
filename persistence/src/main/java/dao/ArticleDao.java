@@ -4,17 +4,18 @@ package dao;
 import model.Article;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
  * Created by DELIA on 11.09.2015.
  */
-public class ArticleDao implements IArticleDao{
+public class ArticleDao implements IArticleDao {
 
     private EntityManager entityManager;
 
 
-    public List<Article> getAll(){
+    public List<Article> getAll() {
         return this.entityManager.createQuery("from Article").getResultList();
     }
 
@@ -23,18 +24,43 @@ public class ArticleDao implements IArticleDao{
         this.entityManager = entityManager;
     }
 
-    public boolean deleteArticle(int id){
+    @Transactional
+    public Article getArticle(Long id) {
 
-        return false;
+        if (id == null) {
+            return null;
+        } else {
+            return entityManager.find(Article.class, id);
+        }
     }
 
-    public boolean saveArticle(Article myArticle){
+    @Transactional
+    public void deleteArticle(Long id) {
 
-        return true;
+        Article itemFromDbs = this.getArticle(id);
+        //Article itemFromDbs = entityManager.find(Article.class, id);
+        if (itemFromDbs != null) {
+            entityManager.remove(itemFromDbs);
+        }
+
     }
 
-    public Article getArticle(int id){
+    @Transactional
+    public void saveArticle(Article myArticle) {
 
-        return null;
+        entityManager.persist(myArticle);
+    }
+
+    @Transactional
+    public void updateArticle(Article myArticle) {
+
+        Article itemFromDbs = this.getArticle(myArticle.getId());
+        if (itemFromDbs != null) {
+            itemFromDbs.setTitle(myArticle.getTitle());
+            itemFromDbs.setDescription(myArticle.getDescription());
+            itemFromDbs.setContent(myArticle.getContent());
+            entityManager.persist(itemFromDbs);
+        }
+
     }
 }

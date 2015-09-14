@@ -3,6 +3,5 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="classpath:/META-INF/facade/article.facade.xml" />
-    <import resource="classpath:/META-INF/facade/comment.facade.xml" />
+    <bean class="facade.CommentFacade"></bean>
 </beans>

@@ -10,7 +10,8 @@ import java.util.List;
 public interface IArticleFacade {
 
     public List<Article> getAllArticles();
-    public boolean deleteMyArticle(int id);
-    public boolean saveMyArticle(Article myArticle);
-    public boolean getMyArticle(int id);
+    public void deleteMyArticle(Long id);
+    public void saveMyArticle(Article myArticle);
+    public Article getMyArticle(Long id);
+    public void updateMyArticle(Article myArticle);
 }

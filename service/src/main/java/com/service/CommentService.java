@@ -4,10 +4,7 @@ import facade.ICommentFacade;
 import model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,6 +39,21 @@ public class CommentService {
         this.commentFacade.deleteMyComment(articleId, commentId);
     }
 
+    @RequestMapping(value = "/article/{articleId}/comment/", method = RequestMethod.POST)
+    @ResponseBody
+    public void saveComment(@RequestBody Comment articleId) {
+
+        this.commentFacade.saveMyComment(articleId);
+    }
+
+    @RequestMapping(value = "/article/{articleId}/comment/{commentId}", method = RequestMethod.PUT)
+    @ResponseBody
+    public void updateComment(@PathVariable("articleId") Long articleId,@PathVariable("commentId") Long id, @RequestBody Comment myComment) {
+
+        myComment.setId(id);
+        myComment.setArticleId(articleId);
+        this.commentFacade.updateMyComment(myComment);
+    }
 
 
     public ICommentFacade getCommentFacade() {

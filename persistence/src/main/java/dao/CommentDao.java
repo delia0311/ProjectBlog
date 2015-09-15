@@ -51,4 +51,25 @@ public class CommentDao implements ICommentDao {
         }
 
     }
+
+    @Transactional
+    public void saveComment(Comment articleId) {
+
+        entityManager.persist(articleId);
+    }
+
+    public Comment getCommentbyId(Long commentId){
+        return this.entityManager.find(Comment.class, commentId);
+    }
+    @Transactional
+    public void updateComment(Comment myComment) {
+
+        Comment itemFromDbs = this.getCommentbyId(myComment.getId());
+        if (itemFromDbs != null) {
+            itemFromDbs.setContent(myComment.getContent());
+            itemFromDbs.setArticleId(myComment.getArticleId());
+            entityManager.persist(itemFromDbs);
+        }
+
+    }
 }

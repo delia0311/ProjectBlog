@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -53,9 +54,10 @@ public class CommentDao implements ICommentDao {
     }
 
     @Transactional
-    public void saveComment(Comment articleId) {
+    public void saveComment(Comment myComment) {
 
-        entityManager.persist(articleId);
+        myComment.setDate(new Date());
+        entityManager.persist(myComment);
     }
 
     public Comment getCommentbyId(Long commentId){
@@ -68,6 +70,7 @@ public class CommentDao implements ICommentDao {
         if (itemFromDbs != null) {
             itemFromDbs.setContent(myComment.getContent());
             itemFromDbs.setArticleId(myComment.getArticleId());
+            itemFromDbs.setDate(new Date());
             entityManager.persist(itemFromDbs);
         }
 

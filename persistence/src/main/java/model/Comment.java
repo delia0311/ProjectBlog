@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * Created by DELIA on 14.09.2015.
@@ -26,11 +27,16 @@ public class Comment {
     @Column(name="articleId")
     public Long articleId;
 
+    @Column(name="date")
+    public Date date;
+
     public Comment() {}
 
     public Comment(String content, Long articleId) {
         this.content = content;
         this.articleId = articleId;
+        this.date = date;
+
     }
 
     public Long getId() {
@@ -55,5 +61,13 @@ public class Comment {
 
     public void setArticleId(Long articleId) {
         this.articleId = articleId;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

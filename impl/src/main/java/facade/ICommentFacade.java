@@ -12,6 +12,6 @@ public interface ICommentFacade {
     public List<Comment> getAllComments(Long articleId);
     public Comment getComment(Long articleId, Long commentId);
     public void deleteMyComment(Long articleId, Long commentId);
-    public void saveMyComment(Comment articleId);
+    public void saveMyComment(Comment myComment);
     public void updateMyComment(Comment myComment);
 }

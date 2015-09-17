@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,9 +42,10 @@ public class CommentService {
 
     @RequestMapping(value = "/article/{articleId}/comment/", method = RequestMethod.POST)
     @ResponseBody
-    public void saveComment(@RequestBody Comment articleId) {
+    public void saveComment(@RequestBody Comment myComment, @PathVariable("articleId") Long articleId) {
 
-        this.commentFacade.saveMyComment(articleId);
+        myComment.setArticleId(articleId);
+        this.commentFacade.saveMyComment(myComment);
     }
 
     @RequestMapping(value = "/article/{articleId}/comment/{commentId}", method = RequestMethod.PUT)

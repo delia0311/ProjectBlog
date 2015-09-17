@@ -2,6 +2,8 @@ package model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
+
 /**
  * Created by DELIA on 11.09.2015.
  */
@@ -21,6 +23,8 @@ public class Article {
     private String description;
     @Column(name="content")
     private String content;
+    @Column(name="date")
+    private Date date;
 
     private Article(){}
 
@@ -28,6 +32,7 @@ public class Article {
         this.title = title;
         this.description = description;
         this.content = content;
+        this.date = date;
     }
 
     public Long getId() {
@@ -60,5 +65,13 @@ public class Article {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

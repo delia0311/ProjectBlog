@@ -37,9 +37,9 @@ public class CommentFacade implements ICommentFacade{
         this.commentDao.deleteComment(articleId, commentId);
     }
 
-    public void saveMyComment(Comment articleId){
+    public void saveMyComment(Comment myComment){
 
-        this.commentDao.saveComment(articleId);
+        this.commentDao.saveComment(myComment);
     }
 
     public void updateMyComment(Comment myComment ){
